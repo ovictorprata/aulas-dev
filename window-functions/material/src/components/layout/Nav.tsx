@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { NIVEIS } from '../../data/exercicios'
 
 export const SECOES = [
   { grupo: 'Aprender', itens: [
@@ -19,7 +20,12 @@ export const SECOES = [
     { id: 'exercicios', n: '12', t: 'Lista extra' },
   ] },
 ]
-const IDS = SECOES.flatMap((g) => g.itens.map((i) => i.id))
+
+/** Subtópicos da lista extra: um por nível. */
+const SUBS: Record<string, { id: string; t: string }[]> = {
+  exercicios: NIVEIS.map((n, i) => ({ id: `nivel-${i + 1}`, t: n.nome.replace(/^Nível (\d) · /, '$1 · ') })),
+}
+const IDS = SECOES.flatMap((g) => g.itens.flatMap((i) => [i.id, ...(SUBS[i.id] ?? []).map((s) => s.id)]))
 
 /** Descobre qual seção está na tela para destacar no menu. */
 function useSecaoAtiva() {
@@ -72,18 +78,28 @@ export function TopBar({ aberto, onMenu }: { aberto: boolean; onMenu: () => void
 export function Nav({ aberto, onNavegar }: { aberto: boolean; onNavegar: () => void }) {
   const ativa = useSecaoAtiva()
   return (
-    <nav id="menu" className={`nav ${aberto ? 'open' : ''}`} aria-label="Conteúdo">
+    <>
+    <div className={`backdrop ${aberto ? 'open' : ''}`} onClick={onNavegar} aria-hidden="true" />
+    <nav id="menu" className={`nav ${aberto ? 'open' : ''}`} aria-label="Tópicos da aula">
       {SECOES.map((g) => (
         <div key={g.grupo}>
           <p className="group">{g.grupo}</p>
           {g.itens.map((i) => (
-            <a key={i.id} href={`#${i.id}`} className={ativa === i.id ? 'active' : ''} onClick={onNavegar} aria-current={ativa === i.id ? 'true' : undefined}>
-              <span className="n">{i.n}</span>
-              {i.t}
-            </a>
+            <div key={i.id}>
+              <a href={`#${i.id}`} className={ativa === i.id ? 'active' : ''} onClick={onNavegar} aria-current={ativa === i.id ? 'true' : undefined}>
+                <span className="n">{i.n}</span>
+                {i.t}
+              </a>
+              {SUBS[i.id]?.map((sub) => (
+                <a key={sub.id} href={`#${sub.id}`} className={`sub ${ativa === sub.id ? 'active' : ''}`} onClick={onNavegar} aria-current={ativa === sub.id ? 'true' : undefined}>
+                  {sub.t}
+                </a>
+              ))}
+            </div>
           ))}
         </div>
       ))}
     </nav>
+    </>
   )
 }

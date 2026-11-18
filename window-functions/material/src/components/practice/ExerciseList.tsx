@@ -38,8 +38,8 @@ export function ExerciseList() {
           </div>
         </div>
       </div>
-      {NIVEIS.map((nivel) => (
-        <section key={nivel.nome} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+      {NIVEIS.map((nivel, i) => (
+        <section key={nivel.nome} id={`nivel-${i + 1}`} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <div className="level-head">
             <h3>{nivel.nome}</h3>
             <p className="lead" style={{ fontSize: 16 }}>{nivel.resumo}</p>
