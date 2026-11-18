@@ -5,6 +5,9 @@ import { useCopiar } from '../ui/useCopiar'
 
 type Props = { banco: Banco; descricao: string }
 
+/** Dentro do visualizador de artifacts do Claude não dá para baixar .sql; lá fica só o Copiar. */
+const podeBaixar = typeof window !== 'undefined' && !('claude' in window)
+
 /** Baixa o texto como arquivo .sql, sem precisar de servidor. */
 function baixar(nome: string, texto: string) {
   const url = URL.createObjectURL(new Blob([texto], { type: 'application/sql;charset=utf-8' }))
@@ -34,10 +37,12 @@ export function ScriptCard({ banco, descricao }: Props) {
         ))}
       </div>
       <div className="controls">
-        <button className="btn primary" onClick={() => baixar(`${banco}.sql`, script)}>
-          Baixar {banco}.sql
-        </button>
-        <button className="btn" onClick={() => copiar(script)}>
+        {podeBaixar && (
+          <button className="btn primary" onClick={() => baixar(`${banco}.sql`, script)}>
+            Baixar {banco}.sql
+          </button>
+        )}
+        <button className={podeBaixar ? 'btn' : 'btn primary'} onClick={() => copiar(script)}>
           {copiado ? 'Script copiado' : 'Copiar script'}
         </button>
       </div>
