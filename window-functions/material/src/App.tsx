@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Nav, TopBar } from './components/layout/Nav'
-import { Anatomia, Inicio, Problema, Tabela } from './sections/Fundamentos'
+import { Anatomia, Inicio, Tabela } from './sections/Fundamentos'
 import { Empates, Partition, RowNumber } from './sections/Rankings'
 import { TopN } from './sections/TopN'
 import { Acumulado, Agregadas, LagLead } from './sections/Contas'
@@ -15,9 +15,8 @@ export default function App() {
       <main className="main">
         <Inicio />
         <Tabela />
-        <Problema />
-        <Anatomia />
         <RowNumber />
+        <Anatomia />
         <Empates />
         <Partition />
         <TopN />

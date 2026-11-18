@@ -4,20 +4,19 @@ import { NIVEIS } from '../../data/exercicios'
 export const SECOES = [
   { grupo: 'Aprender', itens: [
     { id: 'tabela', n: '00', t: 'A tabela' },
-    { id: 'problema', n: '01', t: 'O problema do GROUP BY' },
+    { id: 'row-number', n: '01', t: 'ROW_NUMBER' },
     { id: 'anatomia', n: '02', t: 'Função + janela' },
-    { id: 'row-number', n: '03', t: 'ROW_NUMBER' },
-    { id: 'empates', n: '04', t: 'RANK e DENSE_RANK' },
-    { id: 'partition-by', n: '05', t: 'PARTITION BY' },
-    { id: 'top-n', n: '06', t: 'Top N com WITH' },
-    { id: 'contas', n: '07', t: 'SUM e AVG' },
-    { id: 'lag-lead', n: '08', t: 'LAG e LEAD' },
-    { id: 'acumulado', n: '09', t: 'Total acumulado' },
+    { id: 'empates', n: '03', t: 'RANK e DENSE_RANK' },
+    { id: 'partition-by', n: '04', t: 'PARTITION BY' },
+    { id: 'top-n', n: '05', t: 'Top N com WITH' },
+    { id: 'contas', n: '06', t: 'SUM e AVG' },
+    { id: 'lag-lead', n: '07', t: 'LAG e LEAD' },
+    { id: 'acumulado', n: '08', t: 'Total acumulado' },
   ] },
-  { grupo: 'Consultar', itens: [{ id: 'cola', n: '10', t: 'Cola rápida' }] },
+  { grupo: 'Consultar', itens: [{ id: 'cola', n: '09', t: 'Cola rápida' }] },
   { grupo: 'Praticar', itens: [
-    { id: 'laboratorio', n: '11', t: 'Laboratório' },
-    { id: 'exercicios', n: '12', t: 'Lista extra' },
+    { id: 'laboratorio', n: '10', t: 'Laboratório' },
+    { id: 'exercicios', n: '11', t: 'Lista extra' },
   ] },
 ]
 

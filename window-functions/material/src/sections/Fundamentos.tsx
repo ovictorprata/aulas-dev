@@ -1,5 +1,4 @@
 import { Section } from '../components/layout/Section'
-import { GroupVsOver } from '../components/demos/GroupVsOver'
 import { Anatomy } from '../components/demos/Anatomy'
 import { DataTable } from '../components/ui/DataTable'
 import { MAIS_OUVIDAS, ARTISTAS } from '../data/spotify'
@@ -18,7 +17,7 @@ export function Inicio() {
         sem instalar nada.
       </p>
       <div className="chips">
-        <span className="chip">9 explicações com animação</span>
+        <span className="chip">8 explicações com animação</span>
         <span className="chip">Exercícios de completar</span>
         <span className="chip">Editor de SQL no navegador</span>
         <span className="chip">15 exercícios extras</span>
@@ -39,9 +38,6 @@ export function Tabela() {
           Cada linha da tabela <code>mais_ouvidas</code> já é um <strong>total do ano</strong>: a primeira linha diz que o Bruno ouviu Tempo Perdido 61 vezes. Não é uma linha
           por play.
         </p>
-        <p>
-          Na vida real, essa tabela viria de um <code>GROUP BY</code> sobre milhões de plays. Aqui ela já vem pronta para a gente se concentrar no que interessa: a janela.
-        </p>
       </div>
       <DataTable
         caption="mais_ouvidas"
@@ -57,30 +53,15 @@ export function Tabela() {
   )
 }
 
-export function Problema() {
-  return (
-    <Section id="problema" numero="01 · O problema" titulo="O GROUP BY amassa as linhas" lead="Quero o total de cada pessoa, mas sem perder as músicas.">
-      <div className="prose">
-        <p>
-          O <code>GROUP BY</code> é ótimo para resumir: ele junta as linhas de cada grupo numa linha só. O problema aparece quando você quer o resumo <strong>e</strong> o
-          detalhe na mesma tabela, como cada música com o total da pessoa ao lado.
-        </p>
-        <p>Alterne entre os dois modos e repare no número de linhas:</p>
-      </div>
-      <GroupVsOver />
-      <div className="callout">
-        <b>A ideia central:</b> uma window function faz uma conta olhando para um grupo de linhas (a <b>janela</b>), mas devolve o resultado em <b>cada linha</b>, sem
-        juntar nada.
-      </div>
-    </Section>
-  )
-}
-
 export function Anatomia() {
   return (
-    <Section id="anatomia" numero="02 · A sintaxe" titulo="Toda window function tem duas partes" lead="A função diz qual conta fazer. O OVER diz como enxergar a tabela.">
+    <Section id="anatomia" numero="02 · A sintaxe" titulo="Toda window function tem duas partes" lead="Antes de seguir, vamos desmontar a linha que acabamos de escrever.">
       <div className="prose">
-        <p>Toque em cada pedaço da linha abaixo:</p>
+        <p>
+          A <strong>função</strong> diz qual conta fazer em cada linha. O <strong>OVER</strong> diz como a tabela deve ser enxergada enquanto essa conta é feita: essa
+          visão da tabela é a <strong>janela</strong>. No ROW_NUMBER que você acabou de ver, a janela era a tabela ordenada por plays.
+        </p>
+        <p>Toque em cada parte da linha abaixo:</p>
       </div>
       <Anatomy />
       <div className="grid-3">
@@ -101,7 +82,8 @@ export function Anatomia() {
         </div>
       </div>
       <p className="lead" style={{ fontSize: 17 }}>
-        Daqui para a frente, toda window function vai ser lida assim: <b style={{ color: 'var(--text)' }}>qual conta, em quais grupos, em qual ordem</b>.
+        Daqui para a frente, toda window function vai ser lida assim: <b style={{ color: 'var(--text)' }}>qual conta, em quais grupos, em qual ordem</b>. Nas próximas
+        partes, a gente mexe em uma peça de cada vez: primeiro troca a função, depois troca a janela.
       </p>
     </Section>
   )

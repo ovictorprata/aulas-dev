@@ -15,7 +15,7 @@ const COLA = [
 
 export function Cola() {
   return (
-    <Section id="cola" numero="10 · Resumo" titulo="Cola rápida" lead="Tudo numa tela só, para consultar quando for praticar.">
+    <Section id="cola" numero="09 · Resumo" titulo="Cola rápida" lead="Tudo numa tela só, para consultar quando for praticar.">
       <pre className="code">
         <span className="tk-f">FUNÇÃO</span>() <span className="tk-k">OVER</span> (<span className="tk-k">PARTITION BY</span> grupo{' '}
         <span className="tk-k">ORDER BY</span> ordem) <span className="tk-k">AS</span> nome
@@ -50,7 +50,7 @@ export function Cola() {
 
 export function Laboratorio() {
   return (
-    <Section id="laboratorio" numero="11 · Praticar" titulo="Laboratório" lead="Escreva qualquer consulta e veja o resultado. Os dois bancos já estão carregados.">
+    <Section id="laboratorio" numero="10 · Praticar" titulo="Laboratório" lead="Escreva qualquer consulta e veja o resultado. Os dois bancos já estão carregados.">
       <div className="callout">
         Este editor roda um banco <b>SQLite</b> dentro do seu navegador. As window functions funcionam igual ao MySQL 8. Para praticar no Workbench, use o botão{' '}
         <b>Copiar script</b> e cole lá: ele cria o banco e as tabelas.
@@ -62,7 +62,7 @@ export function Laboratorio() {
 
 export function Exercicios() {
   return (
-    <Section id="exercicios" numero="12 · Lista extra" titulo="Exercícios com outro banco" lead="Uma rede de lojas de acessórios para celular: funcionários, clientes, produtos e vendas.">
+    <Section id="exercicios" numero="11 · Lista extra" titulo="Exercícios com outro banco" lead="Uma rede de lojas de acessórios para celular: funcionários, clientes, produtos e vendas.">
       <div className="prose">
         <p>
           Os exercícios vão do mais simples ao mais difícil. O botão <strong>Conferir resposta</strong> roda a sua consulta e compara com o resultado esperado. Não

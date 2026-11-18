@@ -18,7 +18,7 @@ export function TopN() {
   const pos = numerarPorUsuario(grp, 'RANK')
   const top = grp.map((m, i) => ({ m, p: pos[i] })).filter((x) => x.p <= 3)
   return (
-    <Section id="top-n" numero="06 · Top N com WITH" titulo="As 3 músicas que cada pessoa mais ouviu" lead="Com o ranking pronto, parece que basta um WHERE. Não basta.">
+    <Section id="top-n" numero="05 · Top N com WITH" titulo="As 3 músicas que cada pessoa mais ouviu" lead="Com o ranking pronto, parece que basta um WHERE. Não basta.">
       <div className="prose">
         <p>
           A tentativa óbvia é colocar <code>WHERE posicao &lt;= 3</code> no fim da consulta. O MySQL responde com erro: <code>Unknown column 'posicao' in 'where clause'</code>.

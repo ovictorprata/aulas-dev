@@ -1,3 +1,4 @@
+import { NaPratica } from '../components/learn/NaPratica'
 import { Section } from '../components/layout/Section'
 import { RowNumberDemo } from '../components/demos/RowNumberDemo'
 import { TieDemo } from '../components/demos/TieDemo'
@@ -9,11 +10,11 @@ const FN = ['ROW_NUMBER', 'RANK', 'DENSE_RANK']
 
 export function RowNumber() {
   return (
-    <Section id="row-number" numero="03 · ROW_NUMBER" titulo="Numerando as linhas" lead="A primeira window function: dar 1º, 2º, 3º para cada linha.">
+    <Section id="row-number" numero="01 · ROW_NUMBER" titulo="Numerando as linhas" lead="Quero saber qual música ficou em 1º, 2º, 3º…">
       <div className="prose">
         <p>
-          O objetivo é uma coluna nova, <code>posicao</code>, dizendo em que lugar cada música ficou. O caminho é sempre o mesmo: primeiro a tabela é ordenada, depois a
-          função passa linha por linha.
+          Ordenar a tabela com <code>ORDER BY plays DESC</code> já coloca a mais ouvida no topo, mas não escreve em lugar nenhum que ela é a 1ª. O objetivo é uma coluna
+          nova, <code>posicao</code>, com os números 1 a 10. Quem preenche essa coluna é uma window function.
         </p>
         <p>
           O detalhe que muda tudo: o <code>ORDER BY</code> que você já usaria no fim da consulta <strong>sobe para dentro do OVER</strong>. Ali ele não ordena o resultado
@@ -21,6 +22,10 @@ export function RowNumber() {
         </p>
       </div>
       <RowNumberDemo />
+      <div className="callout">
+        <b>Repare:</b> as 10 linhas continuam lá, do jeito que estavam. A window function só <b>acrescentou uma coluna</b>, calculada para cada linha.
+      </div>
+      <NaPratica chave="ROW_NUMBER" />
       <FillBlank
         pedido="O Marketing quer as músicas da menos ouvida para a mais ouvida, com a posição de cada uma. Complete:"
         parts={[
@@ -38,7 +43,7 @@ export function RowNumber() {
 
 export function Empates() {
   return (
-    <Section id="empates" numero="04 · RANK e DENSE_RANK" titulo="O que fazer com empates" lead="Swim e P do Pecado têm os mesmos 87 plays. Quem fica em 6º?">
+    <Section id="empates" numero="03 · Trocando a função" titulo="RANK e DENSE_RANK: o que fazer com empates" lead="Swim e P do Pecado têm os mesmos 87 plays. Quem fica em 6º?">
       <div className="prose">
         <p>
           O <code>ROW_NUMBER</code> não aceita empate: ele precisa dar um número diferente para cada linha, então escolhe uma ordem qualquer. Se você rodar de novo, pode
@@ -73,6 +78,8 @@ export function Empates() {
         <b>Cuidado no MySQL:</b> <code>rank</code>, <code>dense_rank</code> e <code>row_number</code> são palavras reservadas. Não use como nome de coluna; prefira
         nomes como <code>posicao</code> ou <code>pos_rank</code>.
       </div>
+      <NaPratica chave="RANK" />
+      <NaPratica chave="DENSE_RANK" />
       <FillBlank
         pedido="O time de Produto vai dar medalhas no app: quem empata divide a medalha e ninguém pode pular posição. Complete:"
         parts={['SELECT musica, plays,\n       ', { id: 'f', options: FN, answer: 'DENSE_RANK' }, '() OVER (ORDER BY plays DESC) AS medalha\nFROM mais_ouvidas;']}
@@ -84,14 +91,11 @@ export function Empates() {
 
 export function Partition() {
   return (
-    <Section id="partition-by" numero="05 · PARTITION BY" titulo="Um ranking para cada pessoa" lead="A Retrospectiva é individual: a Ana quer o ranking dela, não o geral.">
+    <Section id="partition-by" numero="04 · Trocando a janela" titulo="PARTITION BY: um ranking para cada pessoa" lead="A Retrospectiva é individual: a Ana quer o ranking dela, não o geral.">
       <div className="prose">
         <p>
           Agora a função fica parada e quem muda é a janela. O <code>PARTITION BY usuario</code> divide a tabela em pedaços, um por pessoa, e{' '}
           <strong>a conta recomeça em cada pedaço</strong>.
-        </p>
-        <p>
-          Se você conhece o <code>GROUP BY</code>, pense assim: o PARTITION BY divide do mesmo jeito, mas não junta as linhas. As 10 músicas continuam lá.
         </p>
       </div>
       <PartitionDemo />

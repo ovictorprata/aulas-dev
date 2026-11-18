@@ -1,3 +1,4 @@
+import { NaPratica } from '../components/learn/NaPratica'
 import { Section } from '../components/layout/Section'
 import { AggDemo } from '../components/demos/AggDemo'
 import { LagDemo } from '../components/demos/LagDemo'
@@ -9,11 +10,11 @@ import { ASSINATURAS } from '../data/spotify'
 
 export function Agregadas() {
   return (
-    <Section id="contas" numero="07 · SUM e AVG" titulo="Contas do grupo, linha por linha" lead="As funções que você usa com GROUP BY também funcionam com OVER.">
+    <Section id="contas" numero="06 · SUM e AVG" titulo="Contas do grupo, linha por linha" lead="Numerar é só uma das contas. Somar e tirar a média também funcionam com OVER.">
       <div className="prose">
         <p>
           <code>SUM</code>, <code>AVG</code>, <code>MAX</code>, <code>MIN</code> e <code>COUNT</code> podem virar window functions: é só colocar um <code>OVER</code>{' '}
-          depois delas. A conta é a mesma do GROUP BY, mas o resultado aparece em cada linha.
+          depois delas. A conta é feita sobre a janela, e o resultado aparece em cada linha.
         </p>
         <p>
           Por que isso é útil? Porque com o total ou a média na mesma linha, você consegue comparar cada linha com o grupo dela: quanto essa música está acima da média da
@@ -21,6 +22,8 @@ export function Agregadas() {
         </p>
       </div>
       <AggDemo />
+      <NaPratica chave="SUM" />
+      <NaPratica chave="AVG" />
       <FillBlank
         pedido="O time de Produto quer saber quanto cada música está acima ou abaixo da média da pessoa. Complete:"
         parts={[
@@ -38,7 +41,7 @@ export function Agregadas() {
 
 export function LagLead() {
   return (
-    <Section id="lag-lead" numero="08 · LAG e LEAD" titulo="Olhando para a linha vizinha" lead="Hoje a pessoa ouviu mais ou menos que no dia anterior?">
+    <Section id="lag-lead" numero="07 · LAG e LEAD" titulo="Olhando para a linha vizinha" lead="Hoje a pessoa ouviu mais ou menos que no dia anterior?">
       <div className="prose">
         <p>
           O <code>LAG</code> pega um valor da <strong>linha de cima</strong>; o <code>LEAD</code>, da <strong>linha de baixo</strong>. As mesmas duas partes de sempre: a
@@ -84,6 +87,8 @@ FROM assinaturas;`}
         })}
       />
       <p className="lead" style={{ fontSize: 16 }}>O plano Universitário cresceu 550 em agosto: volta às aulas.</p>
+      <NaPratica chave="LAG" />
+      <NaPratica chave="LEAD" />
       <FillBlank
         pedido="Complete para mostrar os minutos do próximo acesso de cada pessoa:"
         parts={[
@@ -101,7 +106,7 @@ FROM assinaturas;`}
 
 export function Acumulado() {
   return (
-    <Section id="acumulado" numero="09 · Bônus" titulo="Total acumulado" lead="O que acontece quando o SUM ganha um ORDER BY dentro do OVER.">
+    <Section id="acumulado" numero="08 · Bônus" titulo="Total acumulado" lead="O que acontece quando o SUM ganha um ORDER BY dentro do OVER.">
       <div className="prose">
         <p>
           Sem ORDER BY, o SUM soma o pedaço inteiro. Com ORDER BY, ele soma <strong>do começo do pedaço até a linha atual</strong>. É o famoso "acumulado no mês", o saldo
@@ -113,6 +118,7 @@ export function Acumulado() {
         <b>Pegadinha do empate:</b> se duas linhas tiverem o mesmo valor no ORDER BY, o acumulado soma as duas de uma vez e repete o resultado. Para somar uma linha por
         vez, desempate com mais uma coluna (como um id) ou escreva <code>ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</code> dentro do OVER.
       </div>
+      <NaPratica chave="ACUMULADO" />
     </Section>
   )
 }

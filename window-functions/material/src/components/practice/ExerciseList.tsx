@@ -34,7 +34,7 @@ export function ExerciseList() {
             {feitos.length} de {total} exercícios feitos
           </p>
           <div style={{ height: 6, background: 'var(--border)', borderRadius: 3, marginTop: 8 }}>
-            <div style={{ height: 6, width: `${(feitos.length / total) * 100}%`, background: 'var(--lime)', borderRadius: 3, transition: 'width 300ms' }} />
+            <div style={{ height: 6, width: `${(feitos.length / total) * 100}%`, background: 'var(--lime-fill)', borderRadius: 3, transition: 'width 300ms' }} />
           </div>
         </div>
       </div>
