@@ -3,6 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Escolhe o tema antes de desenhar a página, para não piscar: o salvo pela pessoa ou o do sistema.
+      try {
+        var salvo = localStorage.getItem('tema')
+        var escuro = salvo ? salvo === 'escuro' : matchMedia('(prefers-color-scheme: dark)').matches
+        document.documentElement.dataset.tema = escuro ? 'escuro' : 'claro'
+      } catch (e) {
+        document.documentElement.dataset.tema = 'claro'
+      }
+    </script>
     <title>Window Functions — material da aula</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

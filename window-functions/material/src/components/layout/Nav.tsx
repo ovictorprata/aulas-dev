@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { NIVEIS } from '../../data/exercicios'
+import { TemaBtn } from './TemaBtn'
 
 export const SECOES = [
   { grupo: 'Aprender', itens: [
@@ -66,9 +67,12 @@ export function TopBar({ aberto, onMenu }: { aberto: boolean; onMenu: () => void
       <a href="#inicio" className="brand" style={{ color: 'inherit', textDecoration: 'none' }}>
         Window <span>Functions</span>
       </a>
-      <button className="menu-btn" onClick={onMenu} aria-expanded={aberto} aria-controls="menu">
-        {aberto ? 'Fechar' : 'Conteúdo'}
-      </button>
+      <div className="topbar-acoes">
+        <TemaBtn />
+        <button className="menu-btn" onClick={onMenu} aria-expanded={aberto} aria-controls="menu">
+          {aberto ? 'Fechar' : 'Conteúdo'}
+        </button>
+      </div>
       <div className="progress" style={{ width: `${p * 100}%` }} />
     </div>
   )

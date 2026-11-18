@@ -1,7 +1,8 @@
 /* ===== Design tokens =====
-   Tema claro para leitura. Mantém a identidade dos slides (lima + lilás), mas com tons
+   Tema claro (padrão) para leitura. Mantém a identidade dos slides (lima + lilás), mas com tons
    escurecidos onde viram texto, para ter contraste em fundo claro. */
 :root {
+  color-scheme: light;
   --bg: #f6f6f3;
   --surface: #ffffff;
   --surface-2: #f1f1ec;
@@ -33,6 +34,35 @@
   --mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
 }
 
+/* Tema escuro: mesmos nomes de token, outros valores. O tema é escolhido em index.html. */
+:root[data-tema='escuro'] {
+  color-scheme: dark;
+  --bg: #0e0e12;
+  --surface: #16161c;
+  --surface-2: #1e1e27;
+  --border: #26262f;
+  --border-strong: #3a3a45;
+  --text: #f4f4f6;
+  --text-2: #e4e4e8;
+  --muted: #a1a1aa;
+  --faint: #7c7c87;
+  --lime: #b4d96a;
+  --lime-fill: #b4d96a;
+  --on-fill: #0e0e12;
+  --lime-bg: #222b12;
+  --lime-mark: #2c3518;
+  --lilac: #a78bfa;
+  --lilac-bg: #241f3a;
+  --red: #f4b8bf;
+  --red-bg: #2a1619;
+  --red-border: #5c2a31;
+  --tint-a: #1c1830;
+  --tint-b: #1a2214;
+  --sand: #e9c58b;
+  --teal: #9ad7e0;
+  --overlay: rgba(0, 0, 0, 0.55);
+}
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
@@ -53,7 +83,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .topbar .brand { font-weight: 800; letter-spacing: -0.02em; }
 .topbar .brand span { color: var(--lime); }
 .progress { height: 3px; background: var(--lime-fill); position: absolute; left: 0; bottom: -1px; transition: width 120ms linear; }
+.topbar-acoes { display: flex; align-items: center; gap: 8px; }
 .menu-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 600; }
+.tema-btn { width: 36px; height: 36px; display: inline-grid; place-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 999px; color: var(--text-2); }
+.tema-btn:hover { border-color: var(--border-strong); }
+.tema-btn svg { width: 18px; height: 18px; }
 .nav { display: none; }
 .nav a { display: flex; gap: 12px; align-items: baseline; padding: 9px 12px; border-radius: 12px; color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 600; line-height: 1.35; }
 .nav a .n { font-family: var(--mono); font-size: 12px; color: var(--faint); width: 22px; flex-shrink: 0; }
