@@ -6,7 +6,7 @@ const PARTES: Record<string, Parte> = {
   fn: { id: 'fn', texto: 'ROW_NUMBER()', cls: 'fn', titulo: 'A função: qual conta?', desc: 'O que calcular em cada linha. Aqui, numerar. Outras opções: RANK, DENSE_RANK, SUM, AVG, LAG…' },
   over: { id: 'over', texto: 'OVER (', cls: 'kw', titulo: 'OVER: aqui começa a janela', desc: 'Tudo dentro dos parênteses do OVER descreve como a tabela deve ser enxergada enquanto a conta é feita.' },
   part: { id: 'part', texto: 'PARTITION BY usuario', cls: 'kw', titulo: 'Em quais grupos?', desc: 'Divide a tabela em pedaços, e a conta recomeça em cada um. É opcional: sem ele, a tabela inteira é um grupo só. Ele aparece na parte 04.' },
-  ord: { id: 'ord', texto: 'ORDER BY plays DESC', cls: 'kw', titulo: 'Em qual ordem?', desc: 'Ordena as linhas antes da conta. Rankings e LAG precisam dele; SUM e AVG do grupo inteiro, não.' },
+  ord: { id: 'ord', texto: 'ORDER BY plays DESC', cls: 'kw', titulo: 'Em qual ordem?', desc: 'Ordena as linhas antes da conta. Rankings e LAG precisam dele; SUM e AVG do grupo inteiro, não. Sem PARTITION BY e sem ORDER BY, fica OVER (), vazio.' },
   fim: { id: 'fim', texto: ')', cls: 'kw', titulo: 'Fim da janela', desc: 'Depois do parêntese vem o AS, que dá nome à nova coluna.' },
 }
 

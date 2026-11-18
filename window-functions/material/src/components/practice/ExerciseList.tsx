@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
 import { NIVEIS } from '../../data/exercicios'
 import { ExerciseCard } from './ExerciseCard'
+import { ExemploResolvido } from '../learn/ExemploResolvido'
 
-const CHAVE = 'wf-exercicios-feitos'
+const CHAVE = 'wf-exercicios-feitos-v2'
+const IDS = new Set(NIVEIS.flatMap((n) => n.exercicios.map((e) => e.id)))
 
 function lerFeitos(): string[] {
   try {
-    return JSON.parse(localStorage.getItem(CHAVE) ?? '[]')
+    const salvos: string[] = JSON.parse(localStorage.getItem(CHAVE) ?? '[]')
+    return salvos.filter((id) => IDS.has(id))
   } catch {
     return []
   }
@@ -43,6 +46,9 @@ export function ExerciseList() {
           <div className="level-head">
             <h3>{nivel.nome}</h3>
             <p className="lead" style={{ fontSize: 16 }}>{nivel.resumo}</p>
+          </div>
+          <div className="card">
+            <ExemploResolvido ex={nivel.exemplo} rotulo="Exemplo resolvido" />
           </div>
           {nivel.exercicios.map((ex) => {
             numero += 1

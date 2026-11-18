@@ -224,6 +224,10 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .level-head { display: flex; flex-direction: column; gap: 4px; margin-top: 18px; }
 .level-head h3 { font-size: 24px; }
 .ex-num { font-family: var(--mono); font-size: 13px; color: var(--faint); }
+.ex-tipo { align-self: flex-start; font-family: var(--mono); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 10px; border-radius: 999px; }
+.ex-tipo.guiado { background: var(--lime-bg); color: var(--lime); }
+.ex-tipo.solto { background: var(--lilac-bg); color: var(--lilac); }
+.card > .pratica-ex:first-child { padding-top: 0; border-top: none; }
 .done-mark { color: var(--lime); font-family: var(--mono); font-size: 13px; font-weight: 700; margin-left: auto; }
 details summary { cursor: pointer; font-weight: 700; color: var(--muted); font-size: 15px; }
 details[open] summary { color: var(--text); margin-bottom: 10px; }

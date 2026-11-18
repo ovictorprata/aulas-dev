@@ -97,10 +97,14 @@ export function Exercicios() {
     <Section id="exercicios" numero="12 · Lista extra" titulo="Exercícios com outro banco" lead="Uma rede de lojas de acessórios para celular: funcionários, clientes, produtos e vendas.">
       <div className="prose">
         <p>
-          Os exercícios vão do mais simples ao mais difícil. O botão <strong>Conferir resposta</strong> roda a sua consulta e compara com o resultado esperado. Não
-          precisa usar os mesmos nomes de coluna nem a mesma ordem: o que importa é o resultado.
+          A lista segue a mesma ordem da aula, um passo de cada vez. Cada nível começa com um <strong>exemplo resolvido</strong> em outro contexto. Depois vêm
+          exercícios <strong>parecidos com o exemplo</strong>, que já trazem a consulta começada, e por último exercícios <strong>por sua conta</strong>, para
+          escrever do zero.
         </p>
-        <p>Tente antes de abrir a dica. A solução fica escondida para quando você travar de vez ou quiser comparar com a sua.</p>
+        <p>
+          O botão <strong>Conferir resposta</strong> roda a sua consulta e compara com o resultado esperado. Não precisa usar os mesmos nomes de coluna nem a mesma
+          ordem: o que importa é o resultado. Tente antes de abrir a dica; a solução fica escondida para quando você travar de vez.
+        </p>
       </div>
       <ExerciseList />
     </Section>

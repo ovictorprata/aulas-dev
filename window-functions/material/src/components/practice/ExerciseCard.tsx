@@ -8,11 +8,14 @@ import type { Exercicio } from '../../data/exercicios'
 
 type Props = { ex: Exercicio; numero: number; feito: boolean; onFeito: () => void }
 
-const INICIAL = '-- escreva sua consulta aqui\n'
+const VAZIO = '-- escreva sua consulta aqui\n'
+
+const TIPO = { guiado: 'Parecido com o exemplo', solto: 'Por sua conta' }
 
 /** Um exercício da lista: escreve, roda, confere com a solução sem precisar do mesmo nome de coluna. */
 export function ExerciseCard({ ex, numero, feito, onFeito }: Props) {
-  const [sql, setSql] = useState(INICIAL)
+  const inicial = ex.inicio ?? VAZIO
+  const [sql, setSql] = useState(inicial)
   const [correcao, setCorrecao] = useState<Correcao | null>(null)
   const q = useQuery('loja')
 
@@ -33,13 +36,15 @@ export function ExerciseCard({ ex, numero, feito, onFeito }: Props) {
         <h3 style={{ fontSize: 19 }}>{ex.titulo}</h3>
         {feito && <span className="done-mark">✓ feito</span>}
       </div>
+      <span className={`ex-tipo ${ex.tipo}`}>{TIPO[ex.tipo]}</span>
       <p>{ex.enunciado}</p>
+      {ex.inicio && <p className="result-meta">A consulta já vem começada: troque o ___ pelo que falta.</p>}
       <SqlEditor label={`Consulta do exercício ${numero}`} value={sql} onChange={setSql} onRun={() => q.rodar(sql)} />
       <div className="controls">
         <button className="btn" onClick={() => q.rodar(sql)} disabled={q.carregando}>
           Rodar
         </button>
-        <button className="btn primary" onClick={conferir} disabled={q.carregando || sql.trim() === INICIAL.trim()}>
+        <button className="btn primary" onClick={conferir} disabled={q.carregando || sql.trim() === inicial.trim()}>
           Conferir resposta
         </button>
       </div>

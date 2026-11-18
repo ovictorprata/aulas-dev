@@ -6,7 +6,10 @@ import { RunningDemo } from '../components/demos/RunningDemo'
 import { FillBlank } from '../components/practice/FillBlank'
 import { Code } from '../components/ui/Code'
 import { DataTable } from '../components/ui/DataTable'
-import { ASSINATURAS } from '../data/spotify'
+import { ResultTable } from '../components/practice/ResultTable'
+import { ASSINATURAS, MAIS_OUVIDAS } from '../data/spotify'
+
+const TOTAL_PLAYS = MAIS_OUVIDAS.reduce((t, m) => t + m.plays, 0)
 
 export function Agregadas() {
   return (
@@ -16,9 +19,36 @@ export function Agregadas() {
           <code>SUM</code>, <code>AVG</code>, <code>MAX</code>, <code>MIN</code> e <code>COUNT</code> podem virar window functions: é só colocar um <code>OVER</code>{' '}
           depois delas. A conta é feita sobre a janela, e o resultado aparece em cada linha.
         </p>
+      </div>
+      <h3>Primeiro passo: o OVER vazio</h3>
+      <div className="prose">
         <p>
-          Por que isso é útil? Porque com o total ou a média na mesma linha, você consegue comparar cada linha com o grupo dela: quanto essa música está acima da média da
-          pessoa, quanto esse salário está abaixo da média da loja, e assim por diante.
+          Até aqui o OVER sempre teve alguma coisa dentro. Mas ele também pode ficar <strong>vazio</strong>: <code>OVER ()</code>. Sem PARTITION BY e sem ORDER BY, a
+          janela é a <strong>tabela inteira</strong>. A conta olha todas as linhas e o resultado se repete em cada uma.
+        </p>
+      </div>
+      <Code
+        sql={`SELECT usuario, musica, plays,
+       SUM(plays) OVER () AS total_geral
+FROM mais_ouvidas;`}
+      />
+      <ResultTable
+        r={{ columns: ['usuario', 'musica', 'plays', 'total_geral'], values: MAIS_OUVIDAS.map((m) => [m.usuario, m.musica, m.plays, TOTAL_PLAYS]) }}
+        destaque="total_geral"
+        semContagem
+      />
+      <div className="prose">
+        <p>
+          O {TOTAL_PLAYS} é a soma dos plays de todas as músicas, da Ana e do Bruno juntos. Com <code>AVG(plays) OVER ()</code> seria a média geral, também repetida em
+          todas as linhas.
+        </p>
+      </div>
+      <h3>Segundo passo: uma conta para cada grupo</h3>
+      <div className="prose">
+        <p>
+          Colocando <code>PARTITION BY usuario</code> dentro do OVER, a soma deixa de ser geral e passa a ser de cada pessoa. Por que isso é útil? Com o total ou a
+          média na mesma linha, dá para comparar cada linha com o grupo dela: quanto essa música está acima da média da pessoa, quanto esse salário está abaixo da média
+          da loja, e assim por diante.
         </p>
       </div>
       <AggDemo />

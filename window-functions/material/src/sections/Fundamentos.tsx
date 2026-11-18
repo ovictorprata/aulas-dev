@@ -81,6 +81,10 @@ export function Anatomia() {
           <p>Necessário para rankings e para o LAG.</p>
         </div>
       </div>
+      <div className="callout">
+        <b>Os dois de dentro são opcionais.</b> Sem PARTITION BY e sem ORDER BY, o OVER fica vazio: <code>OVER ()</code>. Aí a janela é a tabela inteira, de uma vez
+        só. Ele vai aparecer na parte 06, com SUM e AVG.
+      </div>
       <p className="lead" style={{ fontSize: 17 }}>
         Daqui para a frente, toda window function vai ser lida assim: <b style={{ color: 'var(--text)' }}>qual conta, em quais grupos, em qual ordem</b>. Nas próximas
         partes, a gente mexe em uma peça de cada vez: primeiro troca a função, depois troca a janela.

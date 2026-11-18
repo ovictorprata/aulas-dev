@@ -24,7 +24,7 @@ export const SECOES = [
 
 /** Subtópicos da lista extra: um por nível. */
 const SUBS: Record<string, { id: string; t: string }[]> = {
-  exercicios: NIVEIS.map((n, i) => ({ id: `nivel-${i + 1}`, t: n.nome.replace(/^Nível (\d) · /, '$1 · ') })),
+  exercicios: NIVEIS.map((n, i) => ({ id: `nivel-${i + 1}`, t: `${i + 1} · ${n.menu}` })),
 }
 const IDS = SECOES.flatMap((g) => g.itens.flatMap((i) => [i.id, ...(SUBS[i.id] ?? []).map((s) => s.id)]))
 
