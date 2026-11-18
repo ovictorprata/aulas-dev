@@ -1,0 +1,28 @@
+<section id="p4-tabela" class="tight">
+<div class="head">
+<h2>O ranking recomeça em cada pedaço</h2>
+</div>
+<div class="stage" style="width:1696px; height:208px;">
+<p id="m-select" class="ln sm" style="left:48px; top:28px; width:1100px;"><span class="k">SELECT</span> usuario, musica, plays,</p>
+<p id="m-rank" class="ln sm" style="left:86px; top:80px; width:200px;"><span class="f">RANK</span>()</p>
+<p id="m-over" class="ln sm" style="left:220px; top:80px; width:160px;"><span class="k">OVER</span> (</p>
+<p id="m-part" class="ln sm mark" style="left:328px; top:80px; width:400px;"><span class="k">PARTITION BY</span> usuario</p>
+<p id="m-order" class="ln sm" style="left:739px; top:80px; width:420px;"><span class="k">ORDER BY</span> plays <span class="k">DESC</span></p>
+<p id="m-as" class="ln sm" style="left:1104px; top:80px; width:300px;">) <span class="k">AS</span> posicao</p>
+<p id="m-from" class="ln sm" style="left:48px; top:132px; width:1100px;"><span class="k">FROM</span> mais_ouvidas;</p>
+</div>
+<div class="atbl" style="width:926px; height:570px;">
+<div id="h" class="ar th" style="left:16px; top:8px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>usuario</p><p>musica</p><p class="num">plays</p><p class="num">posicao</p></div>
+<div id="r-the-fate-of-ophelia" class="ar ana" style="left:16px; top:58px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Ana</p><p>The Fate of Ophelia</p><p class="num">132</p><p class="pos fragment" data-fragment-index="1">1</p></div>
+<div id="r-evidncias" class="ar ana" style="left:16px; top:108px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Ana</p><p>Evidências</p><p class="num">98</p><p class="pos fragment" data-fragment-index="1">2</p></div>
+<div id="r-swim" class="ar ana" style="left:16px; top:158px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Ana</p><p>Swim</p><p class="num">87</p><p class="pos fragment" data-fragment-index="1">3</p></div>
+<div id="r-p-do-pecado" class="ar ana" style="left:16px; top:208px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Ana</p><p>P do Pecado</p><p class="num">87</p><p class="pos fragment" data-fragment-index="1">3</p></div>
+<div id="r-anunciao" class="ar ana" style="left:16px; top:258px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Ana</p><p>Anunciação</p><p class="num">45</p><p class="pos fragment" data-fragment-index="1">5</p></div>
+<div id="r-jetski" class="ar bru" style="left:16px; top:308px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Bruno</p><p>Jetski</p><p class="num">140</p><p class="pos fragment" data-fragment-index="2">1</p></div>
+<div id="r-quem-esse" class="ar bru" style="left:16px; top:358px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Bruno</p><p>Quem É Esse?</p><p class="num">110</p><p class="pos fragment" data-fragment-index="2">2</p></div>
+<div id="r-talvez-voc-precise-de-mim" class="ar bru" style="left:16px; top:408px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Bruno</p><p>Talvez Você Precise de Mim</p><p class="num">92</p><p class="pos fragment" data-fragment-index="2">3</p></div>
+<div id="r-tempo-perdido" class="ar bru" style="left:16px; top:458px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Bruno</p><p>Tempo Perdido</p><p class="num">61</p><p class="pos fragment" data-fragment-index="2">4</p></div>
+<div id="r-eu-te-seguro" class="ar bru last" style="left:16px; top:508px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Bruno</p><p>Eu Te Seguro</p><p class="num">33</p><p class="pos fragment" data-fragment-index="2">5</p></div>
+</div>
+<aside>Clique 1: posições da Ana, de 1 a 5, com Swim e P do Pecado empatadas em 3º. Clique 2: posições do Bruno, de novo começando em 1. Frase-chave: a conta recomeça em cada pedaço. Se a turma conhece GROUP BY: ele também divide por usuário, mas junta as linhas; aqui as 10 continuam.</aside>
+</section>

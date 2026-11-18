@@ -1,0 +1,20 @@
+<section id="c4-b" class="tight">
+<div class="head">
+<h2>A menos ouvida de cada um</h2>
+</div>
+<div class="code">
+<p><span class="k">WITH</span> ranking <span class="k">AS</span> (</p>
+<p class="i1"><span class="k">SELECT</span> usuario, musica, plays,</p>
+<p class="i2 mark"><span class="f">ROW_NUMBER</span>() <span class="k">OVER</span> (<span class="k">PARTITION BY</span> usuario <span class="k">ORDER BY</span> plays <span class="f">ASC</span>) <span class="k">AS</span> posicao</p>
+<p class="i1"><span class="k">FROM</span> mais_ouvidas</p>
+<p>)</p>
+<p><span class="k">SELECT</span> * <span class="k">FROM</span> ranking</p>
+<p class="mark"><span class="k">WHERE</span> posicao = 1;</p>
+</div>
+<div class="atbl" style="width:926px; height:170px;">
+<div id="h" class="ar th" style="left:16px; top:8px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>usuario</p><p>musica</p><p class="num">plays</p><p class="num">posicao</p></div>
+<div id="r-anunciao" class="ar ana" style="left:16px; top:58px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Ana</p><p>Anunciação</p><p class="num">45</p><p class="posn">1</p></div>
+<div id="r-eu-te-seguro" class="ar bru last" style="left:16px; top:108px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Bruno</p><p>Eu Te Seguro</p><p class="num">33</p><p class="posn">1</p></div>
+</div>
+<aside>Três mudanças, destacadas: ROW_NUMBER para garantir uma só por pessoa, ASC para a menor vir primeiro e posicao = 1. Sobram a Anunciação e o Eu Te Seguro.</aside>
+</section>

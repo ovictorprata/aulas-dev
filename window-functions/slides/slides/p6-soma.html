@@ -1,0 +1,23 @@
+<section id="p6-soma" class="tight">
+<div class="head">
+<h2>SUM na janela: o total sem juntar as linhas</h2>
+</div>
+<div class="code">
+<p><span class="k">SELECT</span> usuario, musica, plays, <span class="f">SUM</span>(plays) <span class="k">OVER</span> (<span class="k">PARTITION BY</span> usuario) <span class="k">AS</span> total</p>
+<p><span class="k">FROM</span> mais_ouvidas;</p>
+</div>
+<div class="tbl compact">
+<div class="tr c4 th"><p>usuario</p><p>musica</p><p class="num">plays</p><p class="num">total</p></div>
+<div class="tr c4 ana"><p>Ana</p><p>The Fate of Ophelia</p><p class="num">132</p><p class="pos fragment" data-fragment-index="1">449</p></div>
+<div class="tr c4 ana"><p>Ana</p><p>Evidências</p><p class="num">98</p><p class="pos fragment" data-fragment-index="1">449</p></div>
+<div class="tr c4 ana"><p>Ana</p><p>Swim</p><p class="num">87</p><p class="pos fragment" data-fragment-index="1">449</p></div>
+<div class="tr c4 ana"><p>Ana</p><p>P do Pecado</p><p class="num">87</p><p class="pos fragment" data-fragment-index="1">449</p></div>
+<div class="tr c4 ana"><p>Ana</p><p>Anunciação</p><p class="num">45</p><p class="pos fragment" data-fragment-index="1">449</p></div>
+<div class="tr c4 bru"><p>Bruno</p><p>Jetski</p><p class="num">140</p><p class="pos fragment" data-fragment-index="2">436</p></div>
+<div class="tr c4 bru"><p>Bruno</p><p>Quem É Esse?</p><p class="num">110</p><p class="pos fragment" data-fragment-index="2">436</p></div>
+<div class="tr c4 bru"><p>Bruno</p><p>Talvez Você Precise de Mim</p><p class="num">92</p><p class="pos fragment" data-fragment-index="2">436</p></div>
+<div class="tr c4 bru"><p>Bruno</p><p>Tempo Perdido</p><p class="num">61</p><p class="pos fragment" data-fragment-index="2">436</p></div>
+<div class="tr c4 bru last"><p>Bruno</p><p>Eu Te Seguro</p><p class="num">33</p><p class="pos fragment" data-fragment-index="2">436</p></div>
+</div>
+<aside>O SUM soma valores, como no GROUP BY; a novidade é o OVER na frente. Sem ORDER BY na janela, ele soma o pedaço inteiro e repete o total em todas as linhas do pedaço. Clique 1: total da Ana. Clique 2: total do Bruno. As músicas continuam todas aqui, e cada linha sabe o total da sua pessoa.</aside>
+</section>

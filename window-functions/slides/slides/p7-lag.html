@@ -1,0 +1,25 @@
+<section id="p7-lag" class="stack">
+<div class="head">
+<h2>LAG: pega o valor da linha de cima</h2>
+</div>
+<div class="code">
+<p><span class="k">SELECT</span> usuario, data_acesso, minutos,</p>
+<p class="i1"><span class="f">LAG</span>(minutos) <span class="k">OVER</span> (<span class="k">PARTITION BY</span> usuario <span class="k">ORDER BY</span> data_acesso) <span class="k">AS</span> minutos_anterior</p>
+<p><span class="k">FROM</span> acessos;</p>
+</div>
+<div class="tbl c2">
+<div class="tr t-acc th"><p>usuario</p><p>data_acesso</p><p class="num">minutos</p><p class="num">minutos_anterior</p></div>
+<div class="tr t-acc ana"><p>Ana</p><p>2026-11-01</p><p class="num">42</p><p class="pos fragment one" data-fragment-index="1">NULL</p></div>
+<div class="tr t-acc ana"><p>Ana</p><p>2026-11-02</p><p class="num">35</p><p class="pos fragment one" data-fragment-index="2">42</p></div>
+<div class="tr t-acc ana"><p>Ana</p><p>2026-11-03</p><p class="num">58</p><p class="pos fragment one" data-fragment-index="3">35</p></div>
+<div class="tr t-acc ana"><p>Ana</p><p>2026-11-05</p><p class="num">20</p><p class="pos fragment one" data-fragment-index="4">58</p></div>
+<div class="tr t-acc ana"><p>Ana</p><p>2026-11-06</p><p class="num">64</p><p class="pos fragment one" data-fragment-index="5">20</p></div>
+<div class="tr t-acc ana"><p>Ana</p><p>2026-11-12</p><p class="num">31</p><p class="pos fragment one" data-fragment-index="6">64</p></div>
+<div class="tr t-acc bru"><p>Bruno</p><p>2026-11-01</p><p class="num">90</p><p class="pos fragment" data-fragment-index="7">NULL</p></div>
+<div class="tr t-acc bru"><p>Bruno</p><p>2026-11-08</p><p class="num">15</p><p class="pos fragment" data-fragment-index="7">90</p></div>
+<div class="tr t-acc bru"><p>Bruno</p><p>2026-11-09</p><p class="num">47</p><p class="pos fragment" data-fragment-index="7">15</p></div>
+<div class="tr t-acc bru"><p>Bruno</p><p>2026-11-10</p><p class="num">120</p><p class="pos fragment" data-fragment-index="7">47</p></div>
+<div class="tr t-acc bru last"><p>Bruno</p><p>2026-11-20</p><p class="num">38</p><p class="pos fragment" data-fragment-index="7">120</p></div>
+</div>
+<aside>Mesmas duas partes: a conta agora é me dá o valor da linha de cima; a janela é por usuário, em ordem de data. Clique a clique na Ana: cada linha recebe os minutos da linha de cima. O primeiro acesso vem NULL: não tem ninguém antes, e tudo bem. Último clique: o Bruno inteiro, recomeçando com NULL por causa do PARTITION BY. O LEAD é o contrário: pega a linha de baixo.</aside>
+</section>

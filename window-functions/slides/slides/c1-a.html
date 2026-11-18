@@ -1,0 +1,23 @@
+<section id="c1-a" class="tight" data-transition="magic">
+<div class="head">
+<h2>Correção: o código de antes</h2>
+</div>
+<div class="code">
+<p><span class="k">SELECT</span> usuario, musica, plays, <span class="f">ROW_NUMBER</span>() <span class="k">OVER</span> (<span class="k">ORDER BY</span> plays <span class="k">DESC</span>) <span class="k">AS</span> posicao</p>
+<p><span class="k">FROM</span> mais_ouvidas;</p>
+</div>
+<div class="atbl" style="width:926px; height:570px;">
+<div id="h" class="ar th" style="left:16px; top:8px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>usuario</p><p>musica</p><p class="num">plays</p><p class="num">posicao</p></div>
+<div id="r-jetski" class="ar" style="left:16px; top:58px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Bruno</p><p>Jetski</p><p class="num">140</p><p class="posn">1</p></div>
+<div id="r-the-fate-of-ophelia" class="ar" style="left:16px; top:108px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Ana</p><p>The Fate of Ophelia</p><p class="num">132</p><p class="posn">2</p></div>
+<div id="r-quem-esse" class="ar" style="left:16px; top:158px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Bruno</p><p>Quem É Esse?</p><p class="num">110</p><p class="posn">3</p></div>
+<div id="r-evidncias" class="ar" style="left:16px; top:208px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Ana</p><p>Evidências</p><p class="num">98</p><p class="posn">4</p></div>
+<div id="r-talvez-voc-precise-de-mim" class="ar" style="left:16px; top:258px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Bruno</p><p>Talvez Você Precise de Mim</p><p class="num">92</p><p class="posn">5</p></div>
+<div id="r-swim" class="ar" style="left:16px; top:308px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Ana</p><p>Swim</p><p class="num">87</p><p class="posn">6</p></div>
+<div id="r-p-do-pecado" class="ar" style="left:16px; top:358px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Ana</p><p>P do Pecado</p><p class="num">87</p><p class="posn">7</p></div>
+<div id="r-tempo-perdido" class="ar" style="left:16px; top:408px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Bruno</p><p>Tempo Perdido</p><p class="num">61</p><p class="posn">8</p></div>
+<div id="r-anunciao" class="ar" style="left:16px; top:458px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Ana</p><p>Anunciação</p><p class="num">45</p><p class="posn">9</p></div>
+<div id="r-eu-te-seguro" class="ar last" style="left:16px; top:508px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Bruno</p><p>Eu Te Seguro</p><p class="num">33</p><p class="posn">10</p></div>
+</div>
+<aside>Mostre o código do passo 2 e o resultado dele. Pergunte: o que muda para a menos ouvida vir primeiro?</aside>
+</section>

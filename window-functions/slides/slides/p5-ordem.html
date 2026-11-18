@@ -1,0 +1,18 @@
+<section id="p5-ordem" class="tight">
+<div class="head">
+<h2>O MySQL não lê na ordem em que escrevemos</h2>
+</div>
+<div class="body">
+<div class="flow">
+<div class="step"><p class="n">1º</p><p class="kwd">FROM</p><p class="d">pega a tabela</p></div>
+<x-shape kind="arrow-right"></x-shape>
+<div class="step warn fragment"><p class="n">2º</p><p class="kwd">WHERE</p><p class="d">filtra as linhas</p></div>
+<x-shape kind="arrow-right"></x-shape>
+<div class="step hi fragment"><p class="n">3º</p><p class="kwd">SELECT</p><p class="d">calcula as colunas</p><p class="tagw">window function</p></div>
+<x-shape kind="arrow-right"></x-shape>
+<div class="step fragment"><p class="n">4º</p><p class="kwd">ORDER BY</p><p class="d">ordena o resultado</p></div>
+</div>
+<p class="punch fragment">A window function só é calculada no <b>3º passo</b>. O WHERE roda no 2º, <b>antes dela existir.</b></p>
+</div>
+<aside>Um clique por etapa. A gente escreve SELECT primeiro, mas o MySQL executa o FROM primeiro e o WHERE antes do SELECT. A window function é calculada junto com as colunas do SELECT, no 3º passo. Por isso o WHERE, no 2º, ainda não conhece a coluna posicao. Analogia: é como filtrar as notas de uma prova que ainda não foi corrigida. Por isso ela pode aparecer no ORDER BY, que vem depois, mas não no WHERE.</aside>
+</section>

@@ -1,0 +1,27 @@
+<section id="sobe-3" class="tight">
+<div class="head">
+<h2>Do ORDER BY ao OVER</h2>
+</div>
+<div class="stage" style="width:1696px; height:208px;">
+<p id="l-select" class="ln sm" style="left:48px; top:28px; width:1100px;"><span class="k">SELECT</span> usuario, musica, plays,</p>
+<p id="l-rn" class="ln sm" style="left:182px; top:80px; width:260px;"><span class="f">ROW_NUMBER</span>()</p>
+<p id="l-over" class="ln sm" style="left:432px; top:80px; width:130px;"><span class="k">OVER</span> (</p>
+<p id="l-order" class="ln sm mark" style="left:539px; top:80px; width:381px;"><span class="k">ORDER BY</span> plays <span class="k">DESC</span></p>
+<p id="l-as" class="ln sm" style="left:912px; top:80px; width:260px;">) <span class="k">AS</span> posicao</p>
+<p id="l-from" class="ln sm" style="left:48px; top:132px; width:1100px;"><span class="k">FROM</span> mais_ouvidas;</p>
+</div>
+<div class="tbl compact">
+<div class="tr c4 th"><p>usuario</p><p>musica</p><p class="num">plays</p><p class="num">posicao</p></div>
+<div class="tr c4"><p>Bruno</p><p>Jetski</p><p class="num">140</p><p class="num"></p></div>
+<div class="tr c4"><p>Ana</p><p>The Fate of Ophelia</p><p class="num">132</p><p class="num"></p></div>
+<div class="tr c4"><p>Bruno</p><p>Quem É Esse?</p><p class="num">110</p><p class="num"></p></div>
+<div class="tr c4"><p>Ana</p><p>Evidências</p><p class="num">98</p><p class="num"></p></div>
+<div class="tr c4"><p>Bruno</p><p>Talvez Você Precise de Mim</p><p class="num">92</p><p class="num"></p></div>
+<div class="tr c4"><p>Ana</p><p>Swim</p><p class="num">87</p><p class="num"></p></div>
+<div class="tr c4"><p>Ana</p><p>P do Pecado</p><p class="num">87</p><p class="num"></p></div>
+<div class="tr c4"><p>Bruno</p><p>Tempo Perdido</p><p class="num">61</p><p class="num"></p></div>
+<div class="tr c4"><p>Ana</p><p>Anunciação</p><p class="num">45</p><p class="num"></p></div>
+<div class="tr c4 last"><p>Bruno</p><p>Eu Te Seguro</p><p class="num">33</p><p class="num"></p></div>
+</div>
+<aside>Entra a conta no espaço que faltava: ROW_NUMBER, que numera as linhas. Ela nunca vive sozinha, sempre vem com OVER. Repare na coluna posicao vazia na tabela: no próximo slide ela é preenchida.</aside>
+</section>

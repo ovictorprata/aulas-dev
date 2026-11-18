@@ -1,0 +1,17 @@
+<section id="p5-cte">
+<div class="head">
+<h2>Solução: primeiro calcula, depois filtra</h2>
+</div>
+<div class="code">
+<p><span class="k">WITH</span> ranking <span class="k">AS</span> (</p>
+<p class="i1"><span class="k">SELECT</span> usuario, musica, plays,</p>
+<p class="i2"><span class="f">RANK</span>() <span class="k">OVER</span> (<span class="k">PARTITION BY</span> usuario <span class="k">ORDER BY</span> plays <span class="k">DESC</span>) <span class="k">AS</span> posicao</p>
+<p class="i1"><span class="k">FROM</span> mais_ouvidas</p>
+<p>)</p>
+<p class="mark fragment"><span class="k">SELECT</span> * <span class="k">FROM</span> ranking</p>
+<p class="mark fragment"><span class="k">WHERE</span> posicao &lt;= 3;</p>
+</div>
+<p class="punch">1. O <b>WITH</b> calcula a consulta e dá um nome para ela: <b>ranking</b>.</p>
+<p class="punch fragment">2. Depois, o SELECT de fora usa o ranking <b>como se fosse uma tabela</b> e filtra.</p>
+<aside>O WITH é como salvar um resultado num rascunho com nome para usar depois. Primeiro mostre só a parte de dentro, que é a consulta do passo 4. Clique: aparece o SELECT de fora, que filtra o rascunho.</aside>
+</section>

@@ -1,0 +1,23 @@
+<section id="p3-empate" class="tight">
+<div class="head">
+<h2>O ROW_NUMBER desempatou no chute</h2>
+</div>
+<div class="code">
+<p><span class="k">SELECT</span> usuario, musica, plays, <span class="f">ROW_NUMBER</span>() <span class="k">OVER</span> (<span class="k">ORDER BY</span> plays <span class="k">DESC</span>) <span class="k">AS</span> posicao</p>
+<p><span class="k">FROM</span> mais_ouvidas;</p>
+</div>
+<div class="tbl compact">
+<div class="tr c4 th"><p>usuario</p><p>musica</p><p class="num">plays</p><p class="num">posicao</p></div>
+<div class="tr c4"><p>Bruno</p><p>Jetski</p><p class="num">140</p><p class="pos">1</p></div>
+<div class="tr c4"><p>Ana</p><p>The Fate of Ophelia</p><p class="num">132</p><p class="pos">2</p></div>
+<div class="tr c4"><p>Bruno</p><p>Quem É Esse?</p><p class="num">110</p><p class="pos">3</p></div>
+<div class="tr c4"><p>Ana</p><p>Evidências</p><p class="num">98</p><p class="pos">4</p></div>
+<div class="tr c4"><p>Bruno</p><p>Talvez Você Precise de Mim</p><p class="num">92</p><p class="pos">5</p></div>
+<div class="tr c4 hot"><p>Ana</p><p>Swim</p><p class="num">87</p><p class="pos">6</p></div>
+<div class="tr c4 hot"><p>Ana</p><p>P do Pecado</p><p class="num">87</p><p class="pos">7</p></div>
+<div class="tr c4"><p>Bruno</p><p>Tempo Perdido</p><p class="num">61</p><p class="pos">8</p></div>
+<div class="tr c4"><p>Ana</p><p>Anunciação</p><p class="num">45</p><p class="pos">9</p></div>
+<div class="tr c4 last"><p>Bruno</p><p>Eu Te Seguro</p><p class="num">33</p><p class="pos">10</p></div>
+</div>
+<aside>As linhas destacadas têm os mesmos 87 plays. O ROW_NUMBER precisa dar um número diferente para cada linha, então escolhe uma ordem qualquer; se rodar de novo, pode trocar. Isso é um problema quando o empate importa, como num ranking de medalhas.</aside>
+</section>

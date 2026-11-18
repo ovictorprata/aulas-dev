@@ -1,0 +1,25 @@
+<section id="c4-a" class="tight" data-transition="magic">
+<div class="head">
+<h2>Correção: o top 3 de antes</h2>
+</div>
+<div class="code">
+<p><span class="k">WITH</span> ranking <span class="k">AS</span> (</p>
+<p class="i1"><span class="k">SELECT</span> usuario, musica, plays,</p>
+<p class="i2"><span class="f">RANK</span>() <span class="k">OVER</span> (<span class="k">PARTITION BY</span> usuario <span class="k">ORDER BY</span> plays <span class="k">DESC</span>) <span class="k">AS</span> posicao</p>
+<p class="i1"><span class="k">FROM</span> mais_ouvidas</p>
+<p>)</p>
+<p><span class="k">SELECT</span> * <span class="k">FROM</span> ranking</p>
+<p><span class="k">WHERE</span> posicao &lt;= 3;</p>
+</div>
+<div class="atbl" style="width:926px; height:420px;">
+<div id="h" class="ar th" style="left:16px; top:8px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>usuario</p><p>musica</p><p class="num">plays</p><p class="num">posicao</p></div>
+<div id="r-the-fate-of-ophelia" class="ar ana" style="left:16px; top:58px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Ana</p><p>The Fate of Ophelia</p><p class="num">132</p><p class="posn">1</p></div>
+<div id="r-evidncias" class="ar ana" style="left:16px; top:108px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Ana</p><p>Evidências</p><p class="num">98</p><p class="posn">2</p></div>
+<div id="r-swim" class="ar ana" style="left:16px; top:158px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Ana</p><p>Swim</p><p class="num">87</p><p class="posn">3</p></div>
+<div id="r-p-do-pecado" class="ar ana" style="left:16px; top:208px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Ana</p><p>P do Pecado</p><p class="num">87</p><p class="posn">3</p></div>
+<div id="r-jetski" class="ar bru" style="left:16px; top:258px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Bruno</p><p>Jetski</p><p class="num">140</p><p class="posn">1</p></div>
+<div id="r-quem-esse" class="ar bru" style="left:16px; top:308px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Bruno</p><p>Quem É Esse?</p><p class="num">110</p><p class="posn">2</p></div>
+<div id="r-talvez-voc-precise-de-mim" class="ar bru last" style="left:16px; top:358px; width:890px; grid-template-columns:160px 460px 120px 150px;"><p>Bruno</p><p>Talvez Você Precise de Mim</p><p class="num">92</p><p class="posn">3</p></div>
+</div>
+<aside>O código do passo 5 e o top 3 dele. Pergunte: o que precisa mudar para pegar só a menos ouvida?</aside>
+</section>

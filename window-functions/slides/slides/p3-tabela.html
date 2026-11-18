@@ -1,0 +1,26 @@
+<section id="p3-tabela" class="tight">
+<div class="head">
+<h2>Três funções, a mesma janela</h2>
+</div>
+<div class="code sm">
+<p><span class="k">SELECT</span> musica, plays,</p>
+<p class="i1"><span class="f">ROW_NUMBER</span>() <span class="k">OVER</span> (<span class="k">ORDER BY</span> plays <span class="k">DESC</span>) <span class="k">AS</span> pos_row,</p>
+<p class="i1 fragment" data-fragment-index="1"><span class="f">RANK</span>() <span class="k">OVER</span> (<span class="k">ORDER BY</span> plays <span class="k">DESC</span>) <span class="k">AS</span> pos_rank,</p>
+<p class="i1 fragment" data-fragment-index="2"><span class="f">DENSE_RANK</span>() <span class="k">OVER</span> (<span class="k">ORDER BY</span> plays <span class="k">DESC</span>) <span class="k">AS</span> pos_dense</p>
+<p><span class="k">FROM</span> mais_ouvidas;</p>
+</div>
+<div class="tbl compact">
+<div class="tr t-rank th"><p>musica</p><p class="num">plays</p><p class="num">pos_row</p><p class="num fragment" data-fragment-index="1">pos_rank</p><p class="num fragment" data-fragment-index="2">pos_dense</p></div>
+<div class="tr t-rank"><p>Jetski</p><p class="num">140</p><p class="pos">1</p><p class="pos fragment" data-fragment-index="1">1</p><p class="pos fragment" data-fragment-index="2">1</p></div>
+<div class="tr t-rank"><p>The Fate of Ophelia</p><p class="num">132</p><p class="pos">2</p><p class="pos fragment" data-fragment-index="1">2</p><p class="pos fragment" data-fragment-index="2">2</p></div>
+<div class="tr t-rank"><p>Quem É Esse?</p><p class="num">110</p><p class="pos">3</p><p class="pos fragment" data-fragment-index="1">3</p><p class="pos fragment" data-fragment-index="2">3</p></div>
+<div class="tr t-rank"><p>Evidências</p><p class="num">98</p><p class="pos">4</p><p class="pos fragment" data-fragment-index="1">4</p><p class="pos fragment" data-fragment-index="2">4</p></div>
+<div class="tr t-rank"><p>Talvez Você Precise de Mim</p><p class="num">92</p><p class="pos">5</p><p class="pos fragment" data-fragment-index="1">5</p><p class="pos fragment" data-fragment-index="2">5</p></div>
+<div class="tr t-rank hot"><p>Swim</p><p class="num">87</p><p class="pos">6</p><p class="pos fragment" data-fragment-index="1">6</p><p class="pos fragment" data-fragment-index="2">6</p></div>
+<div class="tr t-rank hot"><p>P do Pecado</p><p class="num">87</p><p class="pos">7</p><p class="pos fragment" data-fragment-index="1">6</p><p class="pos fragment" data-fragment-index="2">6</p></div>
+<div class="tr t-rank hot"><p>Tempo Perdido</p><p class="num">61</p><p class="pos">8</p><p class="pos fragment" data-fragment-index="1">8</p><p class="pos fragment" data-fragment-index="2">7</p></div>
+<div class="tr t-rank"><p>Anunciação</p><p class="num">45</p><p class="pos">9</p><p class="pos fragment" data-fragment-index="1">9</p><p class="pos fragment" data-fragment-index="2">8</p></div>
+<div class="tr t-rank last"><p>Eu Te Seguro</p><p class="num">33</p><p class="pos">10</p><p class="pos fragment" data-fragment-index="1">10</p><p class="pos fragment" data-fragment-index="2">9</p></div>
+</div>
+<aside>Cada clique traz uma linha de código e a coluna que ela gera. Antes de cada clique, pergunte: Swim e P do Pecado ficam em quanto? E Tempo Perdido? Clique 1: RANK dá 6 para as duas e pula para 8. Clique 2: DENSE_RANK dá 6 e segue no 7. Os nomes pos_row, pos_rank e pos_dense evitam usar rank como nome de coluna, que é palavra reservada no MySQL.</aside>
+</section>

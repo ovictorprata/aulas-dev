@@ -1,0 +1,22 @@
+<section id="c6-b" class="tight">
+<div class="head">
+<h2>Cada mês comparado com o anterior, por plano</h2>
+</div>
+<div class="code sm">
+<p><span class="k">SELECT</span> mes, plano, novas_assinaturas,</p>
+<p class="i1">novas_assinaturas - <span class="f">LAG</span>(novas_assinaturas) <span class="k">OVER</span> (<span class="k">PARTITION BY</span> plano <span class="k">ORDER BY</span> mes) <span class="k">AS</span> crescimento</p>
+<p><span class="k">FROM</span> assinaturas;</p>
+</div>
+<div class="atbl" style="width:946px; height:470px;">
+<div id="h" class="ar th" style="left:16px; top:8px; width:910px; grid-template-columns:160px 260px 290px 200px;"><p>mes</p><p>plano</p><p class="num">novas_assinaturas</p><p class="num">crescimento</p></div>
+<div id="a-2026-07-individual" class="ar ana" style="left:16px; top:58px; width:910px; grid-template-columns:160px 260px 290px 200px;"><p>2026-07</p><p>Individual</p><p class="num">1200</p><p class="num">NULL</p></div>
+<div id="a-2026-08-individual" class="ar ana" style="left:16px; top:108px; width:910px; grid-template-columns:160px 260px 290px 200px;"><p>2026-08</p><p>Individual</p><p class="num">1350</p><p class="posn">+150</p></div>
+<div id="a-2026-09-individual" class="ar ana" style="left:16px; top:158px; width:910px; grid-template-columns:160px 260px 290px 200px;"><p>2026-09</p><p>Individual</p><p class="num">1280</p><p class="neg">−70</p></div>
+<div id="a-2026-10-individual" class="ar ana" style="left:16px; top:208px; width:910px; grid-template-columns:160px 260px 290px 200px;"><p>2026-10</p><p>Individual</p><p class="num">1500</p><p class="posn">+220</p></div>
+<div id="a-2026-07-universitrio" class="ar bru" style="left:16px; top:258px; width:910px; grid-template-columns:160px 260px 290px 200px;"><p>2026-07</p><p>Universitário</p><p class="num">400</p><p class="num">NULL</p></div>
+<div id="a-2026-08-universitrio" class="ar hot" style="left:16px; top:308px; width:910px; grid-template-columns:160px 260px 290px 200px;"><p>2026-08</p><p>Universitário</p><p class="num">950</p><p class="posn">+550</p></div>
+<div id="a-2026-09-universitrio" class="ar bru" style="left:16px; top:358px; width:910px; grid-template-columns:160px 260px 290px 200px;"><p>2026-09</p><p>Universitário</p><p class="num">700</p><p class="neg">−250</p></div>
+<div id="a-2026-10-universitrio" class="ar bru last" style="left:16px; top:408px; width:910px; grid-template-columns:160px 260px 290px 200px;"><p>2026-10</p><p>Universitário</p><p class="num">720</p><p class="posn">+20</p></div>
+</div>
+<aside>LAG com a janela por plano e em ordem de mês. O Universitário cresceu 550 em agosto: volta às aulas. Em setembro caiu 250. Pergunte: por que o primeiro mês de cada plano vem NULL?</aside>
+</section>

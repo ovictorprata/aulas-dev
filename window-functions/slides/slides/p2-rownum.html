@@ -1,0 +1,23 @@
+<section id="p2-rownum" class="stack">
+<div class="head">
+<h2>ROW_NUMBER numera a tabela ordenada</h2>
+</div>
+<div class="code">
+<p><span class="k">SELECT</span> usuario, musica, plays, <span class="f">ROW_NUMBER</span>() <span class="k">OVER</span> (<span class="k">ORDER BY</span> plays <span class="k">DESC</span>) <span class="k">AS</span> posicao</p>
+<p><span class="k">FROM</span> mais_ouvidas;</p>
+</div>
+<div class="tbl compact">
+<div class="tr c4 th"><p>usuario</p><p>musica</p><p class="num">plays</p><p class="num">posicao</p></div>
+<div class="tr c4"><p>Bruno</p><p>Jetski</p><p class="num">140</p><p class="pos fragment one">1</p></div>
+<div class="tr c4"><p>Ana</p><p>The Fate of Ophelia</p><p class="num">132</p><p class="pos fragment one">2</p></div>
+<div class="tr c4"><p>Bruno</p><p>Quem É Esse?</p><p class="num">110</p><p class="pos fragment one">3</p></div>
+<div class="tr c4"><p>Ana</p><p>Evidências</p><p class="num">98</p><p class="pos fragment one">4</p></div>
+<div class="tr c4"><p>Bruno</p><p>Talvez Você Precise de Mim</p><p class="num">92</p><p class="pos fragment one">5</p></div>
+<div class="tr c4"><p>Ana</p><p>Swim</p><p class="num">87</p><p class="pos fragment one">6</p></div>
+<div class="tr c4"><p>Ana</p><p>P do Pecado</p><p class="num">87</p><p class="pos fragment one">7</p></div>
+<div class="tr c4"><p>Bruno</p><p>Tempo Perdido</p><p class="num">61</p><p class="pos fragment one">8</p></div>
+<div class="tr c4"><p>Ana</p><p>Anunciação</p><p class="num">45</p><p class="pos fragment one">9</p></div>
+<div class="tr c4 last"><p>Bruno</p><p>Eu Te Seguro</p><p class="num">33</p><p class="pos fragment one">10</p></div>
+</div>
+<aside>A janela já ordenou; a função desce linha por linha numerando. Um clique por linha. Pare no 6 e no 7: Swim e P do Pecado têm 87, mas uma ficou 6 e a outra 7. Pergunte se isso é justo e guarde a resposta para o passo 3.</aside>
+</section>
