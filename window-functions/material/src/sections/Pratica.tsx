@@ -1,6 +1,7 @@
 import { Section } from '../components/layout/Section'
 import { Lab } from '../components/practice/Lab'
 import { ExerciseList } from '../components/practice/ExerciseList'
+import { ScriptCard } from '../components/practice/ScriptCard'
 
 const COLA = [
   ['ROW_NUMBER()', 'Numera 1, 2, 3… sem repetir', 'Top N com quantidade fixa, numerar compras'],
@@ -48,12 +49,43 @@ export function Cola() {
   )
 }
 
+export function Workbench() {
+  return (
+    <Section
+      id="workbench"
+      numero="10 · Praticar no MySQL"
+      titulo="Rodar no Workbench"
+      lead="Prefere praticar no MySQL? Rode o script uma vez e o banco fica pronto, com as tabelas e os dados da aula."
+    >
+      <ol className="passos">
+        <li><span>Abra o MySQL Workbench e entre na sua conexão local.</span></li>
+        <li><span>Baixe o arquivo do banco ou copie o script, logo abaixo.</span></li>
+        <li><span>
+          Abra uma aba de consulta (<b>File → New Query Tab</b>) e cole o script. Se baixou o arquivo, use <b>File → Open SQL Script</b>.
+        </span></li>
+        <li><span>
+          Rode tudo de uma vez com <b>Ctrl + Shift + Enter</b>, ou clique no raio.
+        </span></li>
+        <li><span>Na lista de Schemas, à esquerda, clique em atualizar: o banco aparece lá. O script já deixa o banco selecionado para as próximas consultas.</span></li>
+      </ol>
+      <div className="callout red">
+        <b>O script recomeça do zero:</b> ele apaga o banco com o mesmo nome e cria de novo. Rodar outra vez desfaz qualquer mudança que você fez nas tabelas. Window
+        functions precisam do <b>MySQL 8</b> ou mais novo.
+      </div>
+      <div className="grid-2">
+        <ScriptCard banco="spotify" descricao="O banco da aula: as músicas mais ouvidas, os acessos ao app e as novas assinaturas por plano." />
+        <ScriptCard banco="loja" descricao="O banco da lista extra: uma rede de lojas com funcionários, clientes, produtos e vendas." />
+      </div>
+    </Section>
+  )
+}
+
 export function Laboratorio() {
   return (
-    <Section id="laboratorio" numero="10 · Praticar" titulo="Laboratório" lead="Escreva qualquer consulta e veja o resultado. Os dois bancos já estão carregados.">
+    <Section id="laboratorio" numero="11 · Praticar" titulo="Laboratório" lead="Escreva qualquer consulta e veja o resultado. Os dois bancos já estão carregados.">
       <div className="callout">
-        Este editor roda um banco <b>SQLite</b> dentro do seu navegador. As window functions funcionam igual ao MySQL 8. Para praticar no Workbench, use o botão{' '}
-        <b>Copiar script</b> e cole lá: ele cria o banco e as tabelas.
+        Este editor roda um banco <b>SQLite</b> dentro do seu navegador. As window functions funcionam igual ao MySQL 8. Prefere o Workbench? Os scripts estão em{' '}
+        <a href="#workbench">Rodar no Workbench</a>.
       </div>
       <Lab />
     </Section>
@@ -62,7 +94,7 @@ export function Laboratorio() {
 
 export function Exercicios() {
   return (
-    <Section id="exercicios" numero="11 · Lista extra" titulo="Exercícios com outro banco" lead="Uma rede de lojas de acessórios para celular: funcionários, clientes, produtos e vendas.">
+    <Section id="exercicios" numero="12 · Lista extra" titulo="Exercícios com outro banco" lead="Uma rede de lojas de acessórios para celular: funcionários, clientes, produtos e vendas.">
       <div className="prose">
         <p>
           Os exercícios vão do mais simples ao mais difícil. O botão <strong>Conferir resposta</strong> roda a sua consulta e compara com o resultado esperado. Não

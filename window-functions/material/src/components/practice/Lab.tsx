@@ -4,6 +4,7 @@ import { SqlEditor } from './SqlEditor'
 import { ResultTable } from './ResultTable'
 import { useQuery } from './useQuery'
 import { scriptMySQL, SCHEMAS } from '../../data/schemas'
+import { useCopiar } from '../ui/useCopiar'
 import type { Banco } from '../../lib/sql'
 
 const EXEMPLOS: Record<Banco, string> = {
@@ -19,23 +20,13 @@ FROM funcionarios;`,
 export function Lab() {
   const [banco, setBanco] = useState<Banco>('spotify')
   const [sql, setSql] = useState(EXEMPLOS.spotify)
-  const [copiado, setCopiado] = useState(false)
+  const { copiado, copiar } = useCopiar()
   const q = useQuery(banco)
 
   function trocar(b: Banco) {
     setBanco(b)
     setSql(EXEMPLOS[b])
     q.limpar()
-  }
-
-  async function copiar() {
-    try {
-      await navigator.clipboard.writeText(scriptMySQL(banco))
-      setCopiado(true)
-      setTimeout(() => setCopiado(false), 2000)
-    } catch {
-      setCopiado(false)
-    }
   }
 
   return (
@@ -50,7 +41,7 @@ export function Lab() {
             { value: 'loja', label: 'Banco loja' },
           ]}
         />
-        <button className="btn ghost" onClick={copiar} style={{ marginLeft: 'auto' }}>
+        <button className="btn ghost" onClick={() => copiar(scriptMySQL(banco))} style={{ marginLeft: 'auto' }}>
           {copiado ? 'Script copiado' : 'Copiar script para o Workbench'}
         </button>
       </div>

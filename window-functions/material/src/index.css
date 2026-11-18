@@ -251,6 +251,13 @@ details[open] summary { color: var(--text); margin-bottom: 10px; }
 .anatomy .fn { color: var(--lime); }
 .anatomy .kw { color: var(--lilac); }
 
+/* ===== Passo a passo numerado ===== */
+.passos { margin: 0; padding: 0; list-style: none; counter-reset: passo; display: flex; flex-direction: column; gap: 10px; }
+.passos li { counter-increment: passo; display: flex; gap: 12px; align-items: baseline; color: var(--text-2); }
+.passos li::before { content: counter(passo); flex: 0 0 28px; height: 28px; display: inline-grid; place-items: center; border-radius: 999px; background: var(--lime-bg); color: var(--lime); font-family: var(--mono); font-size: 13px; font-weight: 700; }
+.passos b { color: var(--text); }
+details .code { max-height: 360px; overflow: auto; }
+
 /* ===== Na prática ===== */
 .pratica { gap: 16px; }
 .pratica-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }

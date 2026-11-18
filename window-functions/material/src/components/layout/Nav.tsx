@@ -16,8 +16,9 @@ export const SECOES = [
   ] },
   { grupo: 'Consultar', itens: [{ id: 'cola', n: '09', t: 'Cola rápida' }] },
   { grupo: 'Praticar', itens: [
-    { id: 'laboratorio', n: '10', t: 'Laboratório' },
-    { id: 'exercicios', n: '11', t: 'Lista extra' },
+    { id: 'workbench', n: '10', t: 'Rodar no Workbench' },
+    { id: 'laboratorio', n: '11', t: 'Laboratório' },
+    { id: 'exercicios', n: '12', t: 'Lista extra' },
   ] },
 ]
 

@@ -4,7 +4,7 @@ import { Anatomia, Inicio, Tabela } from './sections/Fundamentos'
 import { Empates, Partition, RowNumber } from './sections/Rankings'
 import { TopN } from './sections/TopN'
 import { Acumulado, Agregadas, LagLead } from './sections/Contas'
-import { Cola, Exercicios, Laboratorio } from './sections/Pratica'
+import { Cola, Exercicios, Laboratorio, Workbench } from './sections/Pratica'
 
 export default function App() {
   const [menu, setMenu] = useState(false)
@@ -24,6 +24,7 @@ export default function App() {
         <LagLead />
         <Acumulado />
         <Cola />
+        <Workbench />
         <Laboratorio />
         <Exercicios />
         <p className="footer">Material de apoio da aula de Window Functions · Victor de Sousa Prata</p>
