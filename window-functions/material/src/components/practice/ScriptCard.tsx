@@ -5,8 +5,8 @@ import { useCopiar } from '../ui/useCopiar'
 
 type Props = { banco: Banco; descricao: string }
 
-/** Dentro do visualizador de artifacts do Claude não dá para baixar .sql; lá fica só o Copiar. */
-const podeBaixar = typeof window !== 'undefined' && !('claude' in window)
+/** Dentro do visualizador do Claude (a página roda num iframe) não dá para baixar .sql; lá fica só o Copiar. */
+const podeBaixar = typeof window !== 'undefined' && window.self === window.top && !('claude' in window)
 
 /** Baixa o texto como arquivo .sql, sem precisar de servidor. */
 function baixar(nome: string, texto: string) {
